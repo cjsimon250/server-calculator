@@ -13,6 +13,23 @@ app.use(express.urlencoded({extended: true}));
 //app.use === "middleware"
 app.use(express.static('./server/public'));
 
+//Empty array to recieve new operations to calculate
+
+let operations= [];
+
+//Getting the operationToHappen object from client
+app.post('/calculations', (req,res) => {
+    let newOperation = req.body.operationToHappen;
+
+    operations.push(newOperation);
+
+})
+
+
+
+
+
+
 
 
 

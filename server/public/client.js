@@ -1,5 +1,8 @@
 $(document).ready(onReady);
 
+//global array to recieve operations
+let operations = []
+
 function onReady(){
     $('.calculation-btns-box').on('click', 
     'button:not(#btn-equals)',
@@ -21,7 +24,14 @@ function addValueToInputfield(){
 
 //function to run on "="
 function onSubmitInputs(){
-    let input = $('#calculation-input').val();
+    let newOperation = {
+        operationToHappen: $('#calculation-input').val()};
 
-    console.log(input)
+        //Sending the 'newOperation' object to the array
+        $.ajax({
+            url: '/calculations',
+            method: 'POST',
+            data: newOperation
+        }).then((response) => {})
+    
 }
