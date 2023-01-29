@@ -14,10 +14,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./server/public'));
 
 //Empty array to recieve new operations to calculate
-
-let operations= [
-    '2+2'
-];
+let operations= [];
 
 //Getting the operationToHappen object from client
 app.post('/calculations', (req,res) => {
@@ -25,44 +22,61 @@ app.post('/calculations', (req,res) => {
 
     operations.push(newOperation);
 
-    calculate();
-})
+    let answer = calculate(newOperation);
+
+    console.log(answer)
+
+});
 
 //function to calculate the given operation
-function calculate(){
-    for(let operation of operations){
+function calculate(string){
+
         //putting all values in operation string into array of strings
-       let valuesInOperation = operation.match(/[0-9]+(\.[0-9]+)?|[+\-*\/]/g);
+       let valuesInOperation = string.match(/[0-9]+(\.[0-9]+)?|[+\-*\/]/g);
 
-       //loop through the new array of strings and seperate numbers
+       //loop through array and change all numbers to numbers
        for(let i = 0; i<valuesInOperation.length; i++){
-        
-        let operator;
-        let operand1;
-        let operand2;
-
         if(/[0-9]+/g.test(valuesInOperation[i])){
             
-            valuesInOperation[i] = Number(valuesInOperation[i])
+            valuesInOperation[i] = Number(valuesInOperation[i]);
         }
-        else{
-             operator = valuesInOperation[i];
-             operand1 = valuesInOperation[i - 1];
-             operand2 = valuesInOperation[i + 1];
-        };
+       };
+       //loop to keep calculating while there are still things in the array
+       while(valuesInOperation.length > 1){
+            let indexOfHighestOperation = findIndexOfHighestOperation(valuesInOperation);
 
-        calculateOnePairOfValues(operand1, operator, operand2)
-       }
+            let operator = valuesInOperation[indexOfHighestOperation];
+            let operand1 = valuesInOperation[indexOfHighestOperation - 1];
+            let operand2 = valuesInOperation[indexOfHighestOperation + 1];
+
+            let result = calculateOnePairOfValues(operand1, operator, operand2);
+
+            valuesInOperation.splice(indexOfHighestOperation - 1, 3, result);
+         };
+
+       return valuesInOperation[0]
+};
+
+//function to find index of the highest ranking operator
+function findIndexOfHighestOperation(array){
+    if(array.indexOf('*') !== -1){
+        return array.indexOf('*')
     }
-}
+    else if(array.indexOf('/') !== -1){
+        return array.indexOf('/')
+    }    
+    if(array.indexOf('+') !== -1){
+        return array.indexOf('+')
+    }
+    if(array.indexOf('-') !== -1){
+        return array.indexOf('-')
+    }
+};
 
 //helper function to calculate one pair of values at a time
 function calculateOnePairOfValues(operand1, operator, operand2){
 
     let result;
-    console.log(operand1)
-    console.log(operand2)
-    console.log(operator)
 
     if(operator === '+'){
         result = Number(operand1) + Number(operand2)
@@ -79,20 +93,8 @@ function calculateOnePairOfValues(operand1, operator, operand2){
         console.log('somethings wrong')
     }
 
-    console.log(result)
     return result;
-}
-
-
-
-
-
-
-
-
-
-
-
+};
 
 //Telling express to listen on port 5,000
 const PORT = 5000;
