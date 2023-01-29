@@ -4,18 +4,18 @@ const express = require("express");
 //Create an express app
 const app = express();
 
-// Body parser, for parsing data
+//Body parser, for parsing data
 app.use(express.urlencoded({ extended: true }));
 
-// Telling express to share files in ./server/public
-// with everyone
+//Telling express to share files in ./server/public
+//with everyone
 //app.use === "middleware"
 app.use(express.static("./server/public"));
 
-//Empty array to recieve new operations to calculate
+//Empty array to recieve new objects with calculated operations
 let operations = [];
 
-//GET the updated data from the operations array
+//GET the updated data from the 'operations' array
 // & send it back to the client side
 app.get("/calculations", (req, res) => {
   res.send(operations);
@@ -38,9 +38,9 @@ app.post("/calculations", (req, res) => {
   res.sendStatus(201);
 });
 
-//function to calculate the given operation
+//Function to calculate the given operation
 function calculate(string) {
-  //Putting all values in operation string into array of strings
+  //Putting all values in 'operation' string into array of strings
   let valuesInOperation = string.match(/[0-9]+(\.[0-9]+)?|[+\-*\/]/g);
 
   //Loop through array and change all numbers to numbers
