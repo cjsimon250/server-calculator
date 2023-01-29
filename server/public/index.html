@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title>Server Calculator</title>
     <script src="./jquery.js"></script>
     <script src="./client.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Server Side Calculator</h1>
+      <h1>Server Side Calculator</h1>
     </header>
-        <div class="input-field">
-            <input id="calculation-input"/>
-            <button id="btn-clear">C</button>
-        </div>
-        <div class="calculation-btns-box">
-            <button id="btn-7">7</button>
-            <button id="btn-8">8</button>
-            <button id="btn-9">9</button>
-            <button id="btn-plus">+</button>
-            <button id="btn-4">4</button>
-            <button id="btn-5">5</button>
-            <button id="btn-6">6</button>
-            <button id="btn-minus">-</button>
-            <button id="btn-1">1</button>
-            <button id="btn-2">2</button>
-            <button id="btn-3">3</button>
-            <button id="btn-multiply">*</button>
-            <button id="btn-0">0</button>
-            <button id="btn-decimal">.</button>
-            <button id="btn-equals">=</button>
-            <button id="btn-divide">/</button>
-        </div>
-    <ol id="calculation-history"></ol>
-</body>
+    <div class="input-field">
+      <input id="calculation-input" />
+      <button id="btn-clear">C</button>
+    </div>
+    <div class="calculation-btns-box">
+      <button id="btn-7">7</button>
+      <button id="btn-8">8</button>
+      <button id="btn-9">9</button>
+      <button id="btn-plus">+</button>
+      <button id="btn-4">4</button>
+      <button id="btn-5">5</button>
+      <button id="btn-6">6</button>
+      <button id="btn-minus">-</button>
+      <button id="btn-1">1</button>
+      <button id="btn-2">2</button>
+      <button id="btn-3">3</button>
+      <button id="btn-multiply">*</button>
+      <button id="btn-0">0</button>
+      <button id="btn-decimal">.</button>
+      <button id="btn-equals">=</button>
+      <button id="btn-divide">/</button>
+    </div>
+
+    <div>
+      <h2 id="answer"></h2>
+    </div>
+
+    <div>
+      <h2>History</h2>
+      <ol id="calculation-history"></ol>
+    </div>
+  </body>
 </html>
