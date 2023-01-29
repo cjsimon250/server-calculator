@@ -1,28 +1,32 @@
-body{
-    margin: 0;
-    padding: 0
+body {
+  margin: 0;
+  padding: 0;
 }
-header{
-    text-align: center;
-}
-
-.input-field{
-    margin-left: 33%;
+header {
+  text-align: center;
 }
 
-#calculation-input{
-    width: 40%;
-}
-#btn-clear{
-    width:10%
+.input-field {
+  margin-left: 33%;
 }
 
-.calculation-btns-box{
-    width: 70%;
-    height: 20%;
-    margin: auto;
-    padding-top: 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px
+#calculation-input {
+  width: 40%;
+}
+#btn-clear {
+  width: 10%;
+}
+
+.calculation-btns-box {
+  width: 70%;
+  height: 20%;
+  margin: auto;
+  padding-top: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+#answer {
+  text-align: ;
 }

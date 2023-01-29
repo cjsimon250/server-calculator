@@ -1,6 +1,6 @@
 $(document).ready(onReady);
 
-//global array to recieve operations
+//Global array to recieve operations
 let operations = [];
 
 function onReady() {
@@ -12,10 +12,12 @@ function onReady() {
 
   $("#btn-equals").on("click", onSubmitInputs);
 
+  $("#btn-clear").on("click", clearInputs);
+
   render();
 }
 
-//function to add values to the input field
+//Function to add values to the input field
 function addValueToInputfield() {
   let id = $(this).attr("id");
   let buttonValue = $(`#${id}`).text();
@@ -24,7 +26,7 @@ function addValueToInputfield() {
   $("#calculation-input").val(currentInputValue + buttonValue);
 }
 
-//fetch completed calculations & render
+//Fetch completed calculations & render
 function fetchOperation() {
   $.ajax({
     url: "/calculations",
@@ -40,20 +42,20 @@ function fetchOperation() {
     });
 }
 
-//function to run on "="
+//Function to run on "="
 function onSubmitInputs() {
   let newOperation = {
     operationToHappen: $("#calculation-input").val(),
   };
 
-  //sending the 'newOperation' object to the array
+  //Sending the 'newOperation' object to the array
   $.ajax({
     url: "/calculations",
     method: "POST",
     data: newOperation,
   })
     .then((response) => {
-      //after posting to server fetch and render to DOM
+      //After posting to server fetch and render to DOM
       fetchOperation();
     })
     .catch((error) => {
@@ -61,7 +63,14 @@ function onSubmitInputs() {
     });
 }
 
-//render to the DOM
+//Function to clear input
+function clearInputs() {
+  $("#calculation-input").val("");
+
+  render();
+}
+
+//Render to the DOM
 function render() {
   $("#calculation-history").empty();
 
