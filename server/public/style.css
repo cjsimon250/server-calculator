@@ -1,28 +1,106 @@
-body{
-    margin: 0;
-    padding: 0
+body {
+  margin: 0;
+  padding: 0;
 }
-header{
-    text-align: center;
-}
-
-.input-field{
-    margin-left: 33%;
+header {
+  text-align: center;
+  font-size: 2rem;
+  font-family: sans-serif;
 }
 
-#calculation-input{
-    width: 40%;
-}
-#btn-clear{
-    width:10%
+#calculator-box {
+  width: 20em;
+  height: 30em;
+  margin: auto;
+  margin-top: 10%;
+  background-color: rgb(28, 26, 26);
+  border-radius: 20px;
 }
 
-.calculation-btns-box{
-    width: 70%;
-    height: 20%;
-    margin: auto;
-    padding-top: 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px
+#calculator-items {
+  height: 28em;
+  padding-top: 1em;
+}
+
+#calculation-input {
+  margin-top: 10%;
+  margin-left: 13%;
+  width: 70%;
+  height: 3em;
+  font-size: 1.5em;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: rgb(62, 62, 62);
+  border-color: rgb(47, 48, 47);
+  text-align: right;
+  font-family: math;
+  color: aliceblue;
+  letter-spacing: 1px;
+}
+
+.calculation-btns-box {
+  width: 70%;
+  height: 40%;
+  margin: auto;
+  padding-top: 15%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 20px;
+}
+
+#btn-clear {
+  width: 70%;
+  margin-left: 15%;
+  margin-bottom: 10%;
+  color: aliceblue;
+  background-color: rgb(24, 180, 201);
+  border-color: rgb(28, 26, 26);
+}
+
+button {
+  padding: 5%;
+  font-size: medium;
+  border-radius: 10px;
+}
+
+.number {
+  color: aliceblue;
+  background-color: rgb(62, 62, 62);
+  border-color: rgb(28, 26, 26);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.operator {
+  color: aliceblue;
+  border-color: rgb(28, 26, 26);
+  background-color: rgb(21, 94, 137);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dot-equals {
+  color: aliceblue;
+  border-color: rgb(28, 26, 26);
+  background-color: rgb(21, 94, 137);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#answers-history-box {
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  font-size: 1.3em;
+  font-family: sans-serif;
+}
+
+#answer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: -1px 0px 0px black, 1px 0px 0px black, 0px -1px 0px black,
+    0px 1px 0px black;
+  color: rgb(24, 180, 201);
+  letter-spacing: 1px;
+}
+
+#history-log {
+  margin: auto;
 }

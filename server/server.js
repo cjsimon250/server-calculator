@@ -4,18 +4,18 @@ const express = require("express");
 //Create an express app
 const app = express();
 
-// Body parser, for parsing data
+//Body parser, for parsing data
 app.use(express.urlencoded({ extended: true }));
 
-// Telling express to share files in ./server/public
-// with everyone
+//Telling express to share files in ./server/public
+//with everyone
 //app.use === "middleware"
 app.use(express.static("./server/public"));
 
-//Empty array to recieve new operations to calculate
+//Empty array to recieve new objects with calculated operations
 let operations = [];
 
-//GET the updated data from the operations array
+//GET the updated data from the 'operations' array
 // & send it back to the client side
 app.get("/calculations", (req, res) => {
   res.send(operations);
@@ -32,24 +32,24 @@ app.post("/calculations", (req, res) => {
     answer,
   };
 
-  //push completed operation object into operations
+  //Push completed operation object into operations
   operations.push(completedOperation);
 
   res.sendStatus(201);
 });
 
-//function to calculate the given operation
+//Function to calculate the given operation
 function calculate(string) {
-  //putting all values in operation string into array of strings
+  //Putting all values in 'operation' string into array of strings
   let valuesInOperation = string.match(/[0-9]+(\.[0-9]+)?|[+\-*\/]/g);
 
-  //loop through array and change all numbers to numbers
+  //Loop through array and change all numbers to numbers
   for (let i = 0; i < valuesInOperation.length; i++) {
     if (/[0-9]+/g.test(valuesInOperation[i])) {
       valuesInOperation[i] = Number(valuesInOperation[i]);
     }
   }
-  //loop to keep calculating while there are still things in the array
+  //Loop to keep calculating while there are still things in the array
   while (valuesInOperation.length > 1) {
     let indexOfHighestOperation =
       findIndexOfHighestOperation(valuesInOperation);
@@ -65,7 +65,7 @@ function calculate(string) {
   return valuesInOperation[0];
 }
 
-//function to find index of the highest ranking operator
+//Function to find index of the highest ranking operator
 function findIndexOfHighestOperation(array) {
   if (array.indexOf("*") !== -1) {
     return array.indexOf("*");
@@ -78,7 +78,7 @@ function findIndexOfHighestOperation(array) {
   }
 }
 
-//helper function to calculate one pair of values at a time
+//Helper function to calculate one pair of values at a time
 function calculateOnePairOfValues(operand1, operator, operand2) {
   let result;
 
