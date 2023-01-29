@@ -97,6 +97,22 @@ function calculateOnePairOfValues(operand1, operator, operand2) {
   return result;
 }
 
+//GET the newly emptied operations array
+app.get("/clear-history", (req, res) => {
+  res.send(operations);
+});
+
+//Getting all operations from client to empty the array
+app.post("/clear-history", (req, res) => {
+  let operationsToEmpty = req.body;
+
+  operationsToEmpty = [];
+
+  operations = operationsToEmpty;
+
+  res.send(201);
+});
+
 //Telling express to listen on port 5,000
 const PORT = 5000;
 app.listen(PORT, () => {});
