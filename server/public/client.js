@@ -63,7 +63,6 @@ function onSubmitInputs() {
     .catch((error) => {
       console.log("onSubmitInputs not working properly");
     });
-
 }
 
 //Function to clear input
@@ -89,24 +88,28 @@ function render() {
   }
 }
 
+//fetch the newly emptied array
+function fetchEmptyOperations() {
+  $.ajax({
+    url: "/clear-history",
+    method: "GET,",
+  }).then((response) => {
+    response = operations;
+    render();
+  });
+}
+
 //Function to clear history and previous answer
 function clearHistory() {
-    $.ajax({
-        url: "/clear-history",
-        method: "POST",
-        data: operations
-    })
-      .then((response)) => {
-        
-      }
+  $.ajax({
+    url: "/clear-history",
+    method: "POST",
+    data: operations,
+  }).then((response) => {
+    fetchEmptyOperations();
 
-  
-  }
+    $("#answer").text("");
 
-  //operations = [];
-  
-  //$("#answer").text("");
-//
-  //$("#calculation-history").empty();
-
-  //render();
+    $("#calculation-history").empty();
+  });
+}
