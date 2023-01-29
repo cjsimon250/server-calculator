@@ -104,3 +104,8 @@ button {
 #history-log {
   margin: auto;
 }
+
+#clear-history {
+  background-color: rgb(254, 143, 46);
+  padding: 1%;
+}
