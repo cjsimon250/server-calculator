@@ -16,6 +16,8 @@ function onReady() {
 
   $("#clear-history").on("click", clearHistory);
 
+  fetchOperation();
+
   render();
 }
 

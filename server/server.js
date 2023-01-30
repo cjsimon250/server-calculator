@@ -110,7 +110,7 @@ app.post("/clear-history", (req, res) => {
 
   operations = operationsToEmpty;
 
-  res.send(201);
+  res.sendStatus(201);
 });
 
 //Telling express to listen on port 5,000
