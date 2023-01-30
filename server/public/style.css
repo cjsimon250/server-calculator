@@ -93,20 +93,13 @@ button {
   font-family: sans-serif;
 }
 
-#answer {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  text-shadow: -1px 0px 0px black, 1px 0px 0px black, 0px -1px 0px black,
-    0px 1px 0px black;
-  color: rgb(24, 180, 201);
-  letter-spacing: 1px;
-}
-
 #history-log {
   font-style: oblique;
   margin: auto;
 }
 
 #clear-history {
+  margin-top: 5%;
   background-color: rgb(254, 143, 46);
   border-color: black;
   color: black;
