@@ -70,24 +70,6 @@ function onSubmitInputs() {
 //Function to clear input
 function clearInputs() {
   $("#calculation-input").val("");
-
-  render();
-}
-
-//Render to the DOM
-function render() {
-  $("#calculation-history").empty();
-
-  for (let operation of operations) {
-    $("#calculation-history").append(`
-    <li>${operation.newOperation} = ${operation.answer}</li>
-    `);
-
-    if (operations.indexOf(operation) === operations.length - 1) {
-      let answer = operation.answer;
-      $("#answer").text(`${answer}`);
-    }
-  }
 }
 
 //fetch the newly emptied array
@@ -114,4 +96,26 @@ function clearHistory() {
 
     $("#calculation-history").empty();
   });
+}
+
+//Render to the DOM
+function render() {
+  $("#calculation-history").empty();
+
+  for (let operation of operations) {
+    $("#calculation-history").append(`
+      <li>${operation.newOperation} = ${operation.answer}</li>
+      `);
+
+    if (operations.indexOf(operation) === operations.length - 1) {
+      let answer = operation.answer;
+      $("#answer").text(`${answer}`);
+    }
+  }
+
+  if (operations.length > 0) {
+    let answer = operations[operations.length - 1].answer;
+
+    $("#calculation-input").val(answer);
+  }
 }
